@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'Css/Estilos.css' %}">
+
+</head>
+<body class="color1">
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'Img/icon.png' %}" width="30px" height="30px">
+        </a>
+
+        <div class="collapse navbar-collapse" id="opciones">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'somos' %}">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'fotos' %}">Galeria de fotos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'taller' %}">Talleres</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bienvenid@ {{user.username}}</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" id="userBookStop">
+                     <img src="{% static 'Img/icono.jpg' %}" alt="MikoShutofo" width="50px">Cerrar Sesión
+                </a>
+            {% else %}    
+            <a href="{% url 'login' %}" id="userBookStop">
+                <img src="{% static 'Img/icono.jpg' %}" alt="MikoShutofo" width="50px">Iniciar sesión
+            </a>
+            {% endif %}
+        </div>
+        
+    </nav>
+
+    <br><br>
+    <div class="container">
+        <h1>Administrando Productos</h1>
+        <br>
+        <table class="table">
+            <thead>
+                <th> IDProducto </th>
+                <th> Nombre </th>
+                <th> Tamaño en cm </th>
+                <th> Categoria</th>
+                <th> Imagen</th>
+
+            </thead>
+            <tbody>
+                {% for pr in producto %}
+                <tr>
+                       <td>{{ pr.idproducto }}</td>
+                        <td>{{ pr.nombre }}</td>
+                        <td>{{ pr.tamaño }}</td>
+                        <td>{{ pr.categoria}}</td>
+                        {% if pr.imagen %}
+                            <td scope="row">
+                                <img src="{{ pr.imagen.url}}" style="height:100px; width:100px;">    
+                            </td>
+                        {% endif %}
+                </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'addpro' %}" class="btn btn-primary" target="_blank">Crear Producto</a>
+        {% else %}
+            <a href="{% url 'home' %}" class="btn btn-success" target="_blank">Home</a>
+        {% endif %}
+        
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+    <footer>
+        <p>@Copyrigth Jocelyn Navarro</p> 
+        <br>
+        <p>
+            <a href="https://www.instagram.com"><img src="{% static 'Img/Redes/int.png' %}" style="width:42px;height:42px;"> Instagram</a>
+            <a href="https://www.facebook.com/"><img src="{% static 'Img/Redes/face.png' %}" style="width:42px;height:42px;"> Facebook</a>
+            <a href="https://www.gmail.com"><img src="{% static 'Img/Redes/gm.png' %}" style="width:42px;height:42px;"> Gmail</a>
+            <a href="https://web.whatsapp.com"><img src="{% static 'Img/Redes/wht.png' %}" style="width:42px;height:42px;"> WhatsApp</a>
+        </p>   
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>      
+</body>
+</html>

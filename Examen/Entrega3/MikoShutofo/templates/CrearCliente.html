@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cliente</title>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'Css/Estilos.css' %}">
+
+    <style>
+        body{
+            font-family: Arial;
+        }
+
+        .error-control{
+            border: 1px solid red;
+        }
+
+        label.error{
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <script>
+        $(function(){
+
+            $("#formulario").validate({
+                rules:{
+                    rut: "required",
+                    nombre: "required",
+                    apellidoPat: "required",
+                    apellidoMat: "required",
+                    contato: 'required',
+                    correo: 'required',
+                    categoria: "required"
+                },
+                messages: 
+                {
+                    rut:{
+                        required: 'Ingrese un rut',
+                    },
+
+                    nombre:{
+                        required: 'Ingrese un nombre',
+                    },
+
+                    apellidoPat: {
+                        required: 'Ingrese su apellido paterno',
+                    },
+
+                    apellidoMat: {
+                        required: 'Ingrese su apellido materno',
+                    },
+                    contato:{
+                        required: 'Ingrese un número de contacto',
+                    },
+                    correo:{
+                        required: 'Ingrese un correo',
+                    },
+                    nombre:{
+                        required: 'Ingrese un nombre',
+                    },
+                    categoria: {
+                        required: 'Seleccione una categoria',
+                    },
+                }
+            });
+         });
+
+    </script>
+
+</head>
+<body class="color1">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'Img/icon.png' %}" width="30px" height="30px">
+        </a>
+
+        <div class="collapse navbar-collapse" id="opciones">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'somos' %}">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'fotos' %}">Galeria de fotos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'taller' %}">Talleres</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <h2>Añadiendo Cliente</h2>
+        </div>
+
+        <div class="row">
+            <form method="POST" action="#" id="formulario">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    {{ datosform.rut.label}}
+                    {{ datosform.rut}}
+                </div>
+
+                <div class="form-group">
+                    {{ datosform.nombre.label}}
+                    {{ datosform.nombre}}
+                </div>
+
+                <div class="form-group">
+                    {{ datosform.apellidoPat.label}}
+                    {{ datosform.apellidoPat}}
+                </div>
+
+                <div class="form-group">
+                    {{ datosform.apellidoMat.label}}
+                    {{ datosform.apellidoMat}}
+                </div>
+
+                <div class="form-group">
+                    {{ datosform.contato.label}}
+                    {{ datosform.contato}}
+                </div>
+
+                <div class="form-group">
+                    {{ datosform.correo.label}}
+                    {{ datosform.correo}}
+                </div>
+
+                <div class="form-group">
+                    {{ datosform.categoria.label}}
+                    {{ datosform.categoria}}
+                </div>
+
+                <br><br>
+                <div class="row">
+                    <div class="col-md">
+                        <input type="submit" class="btn btn-primary" value="Enviar">
+                        <a href="{% url 'home' %}" class="btn btn-success">Home</a>
+                    </div>
+                </div>
+            <br>
+            </form>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <p>@Copyrigth Jocelyn Navarro</p> 
+        <br>
+        <p>
+            <a href="https://www.instagram.com"><img src="{% static 'Img/Redes/int.png' %}" style="width:42px;height:42px;"> Instagram</a>
+            <a href="https://www.facebook.com/"><img src="{% static 'Img/Redes/face.png' %}" style="width:42px;height:42px;"> Facebook</a>
+            <a href="https://www.gmail.com"><img src="{% static 'Img/Redes/gm.png' %}" style="width:42px;height:42px;"> Gmail</a>
+            <a href="https://web.whatsapp.com"><img src="{% static 'Img/Redes/wht.png' %}" style="width:42px;height:42px;"> WhatsApp</a>
+        </p>   
+    </footer>  
+    
+</body>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/validacion.js' %}"></script>
+</html>

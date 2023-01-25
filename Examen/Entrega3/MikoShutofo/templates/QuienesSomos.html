@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MikoShutofo</title>
+        {% load static %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'Css/Estilos.css' %}">
+    </head>
+    <body class="colorWho">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'Img/icon.png' %}" width="30px" height="30px">
+            </a>
+    
+            <div class="collapse navbar-collapse" id="opciones">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Principal</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'fotos' %}">Galeria de fotos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'taller' %}">Talleres</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pro' %}">Productos</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bienvenid@ {{user.username}}</a>
+                        </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+
+            <div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" id="userBookStop">
+                         <img src="{% static 'Img/icono.jpg' %}" alt="MikoShutofo" width="50px">Cerrar Sesión
+                    </a>
+                {% else %}    
+                <a href="{% url 'login' %}" id="userBookStop">
+                    <img src="{% static 'Img/icono.jpg' %}" alt="MikoShutofo" width="50px">Iniciar sesión
+                </a>
+                {% endif %}
+            </div>
+            
+        </nav>
+        <br>
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                    <div class="jumbotron">
+                        <h2>¿Quiénes somos?</h2>
+                        <br>
+                        <p>
+                            Somos una cooperativa de mujeres chilenas amantes del anime y la cultura japonesa provenientes del sur de nuestro país, creadoras de la marca MikoShutofo el cual significa "Miko" son las representantes de los templos shinto japoneses 
+                            y "Shutofo" significa tejidos en el idioma japones. Comenzamos con esta iniciativa a mediados del año 2019, con ganas de compartir nuestro arte de tejidos con el resto.
+                        </p>
+                        <br>
+                        <p>
+                            Nos inspiramos en la animación japonesa para crear productos relacionados a esta, hechas a mano con la lana de las ovejas de nuestro ganado.
+                        <br>
+                            Nuestros productos son elaborados 100% con lana de oveja, en colores naturales o teñidos.
+                        </p>
+                        <p>
+                            Buscamos ser conocidas por diversos grupos en todo Chile los cuales disfruten y les agrade nuestro trabajo.
+                        </p>
+                        <br>
+                        <p>
+                            Les dejamos un tutorial hecho por una de nosotras para hacer una ballenita o((*^▽^*))o
+                        <br>                       
+                        </p>
+                        <pre><div class="video-responsive">
+                            <iframe src="https://www.youtube.com/embed/EYnF3y1TGKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </pre>
+                        
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <br>
+
+        <img src="{% static 'Img/miko.gif' %}" class="center2">
+
+        <br>
+        <br>
+        
+        <footer>
+            <p>@Copyrigth Jocelyn Navarro</p> 
+            <br>
+            <p>
+                <a href="https://www.instagram.com"><img src="{% static 'Img/Redes/int.png' %}" style="width:42px;height:42px;"> Instagram</a>
+                <a href="https://www.facebook.com/"><img src="{% static 'Img/Redes/face.png' %}" style="width:42px;height:42px;"> Facebook</a>
+                <a href="https://www.gmail.com"><img src="{% static 'Img/Redes/gm.png' %}" style="width:42px;height:42px;"> Gmail</a>
+                <a href="https://web.whatsapp.com"><img src="{% static 'Img/Redes/wht.png' %}" style="width:42px;height:42px;"> WhatsApp</a>
+            </p>   
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>      
+    </body>
+
+</html>

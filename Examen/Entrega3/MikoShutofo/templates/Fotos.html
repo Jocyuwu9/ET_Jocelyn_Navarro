@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MikoShutofo</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'Css/Estilos.css' %}">
+    </head>
+
+    <body class="colorFotos">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'Img/icon.png' %}" width="30px" height="30px">
+            </a>
+    
+            <div class="collapse navbar-collapse" id="opciones">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Principal</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'somos' %}">Quienes somos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'taller' %}">Talleres</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pro' %}">Productos</a>
+                    </li>
+                    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bienvenid@ {{user.username}}</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            <div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" id="userBookStop">
+                         <img src="{% static 'Img/icono.jpg' %}" alt="MikoShutofo" width="50px">Cerrar Sesión
+                    </a>
+                {% else %}    
+                <a href="{% url 'login' %}" id="userBookStop">
+                    <img src="{% static 'Img/icono.jpg' %}" alt="MikoShutofo" width="50px">Iniciar sesión
+                </a>
+                {% endif %}
+            </div>
+            
+        </nav>
+    
+        <div class="container centTextFotos">
+            <h1>Productos</h1>
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'ayaka' %}"><img class="card-img-top foto" src="{% static 'Img/Ayaka.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Kamisato Ayaka.</h4>
+                            <p class="card-text">Amigurumi del personaje Kamisato Ayaka del juego Genshin Impact.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'cerdo' %}"><img class="card-img-top foto" src="{% static 'Img/cerdito.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Cerdito Sumeru.</h4>
+                            <p class="card-text">Amigurumi de un tipo de cerdito del juego Genshin Impact.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'kazuha' %}"><img class="card-img-top foto" src="{% static 'Img/Kazuha.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Kaedehara Kazuha.</h4>
+                            <p class="card-text">Amigurumi del personaje Kaedehara Kazuha del juego Genshin Impact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'drak' %}"><img class="card-img-top foto" src="{% static 'Img/Revengers.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Haori Draken.</h4>
+                            <p class="card-text">Haori tejido, basado en el haori usado por Draken, un personaje de anime.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'nezu' %}"><img class="card-img-top foto" src="{% static 'Img/NezukoChaleco.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Haori Nezuko.</h4>
+                            <p class="card-text">Haori tejido, basado en el haori usado por Nezuko, un personaje de anime.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'zenit' %}"><img class="card-img-top foto" src="{% static 'Img/ChalecoZenit.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Haori Zenitsu.</h4>
+                            <p class="card-text">Haori tejido, basado en el haori usado por Zenitsu, un personaje de anime.</p>                     
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'lu' %}"><img class="card-img-top foto" src="{% static 'Img/Luffy.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Luffy.</h4>
+                            <p class="card-text">Amigurumi del personaje Luffy, del anime One Piece.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'rana' %}"><img class="card-img-top foto" src="{% static 'Img/Ranita.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Gorro Ranita.</h4>
+                            <p class="card-text">Gorrito de ranita.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md">
+                    <div class="card">
+                        <a href="{% url 'koro' %}"><img class="card-img-top foto" src="{% static 'Img/Korone.jpg' %}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">Korone.</h4>
+                            <p class="card-text">Amigurumi de la Vtuber Korone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+
+        <br>
+        <br>
+        <footer>
+            <p>@Copyrigth Jocelyn Navarro</p> 
+            <br>
+            <p>
+                <a href="https://www.instagram.com"><img src="{% static 'Img/Redes/int.png' %}" style="width:42px;height:42px;"> Instagram</a>
+                <a href="https://www.facebook.com/"><img src="{% static 'Img/Redes/face.png' %}" style="width:42px;height:42px;"> Facebook</a>
+                <a href="https://www.gmail.com"><img src="{% static 'Img/Redes/gm.png' %}" style="width:42px;height:42px;"> Gmail</a>
+                <a href="https://web.whatsapp.com"><img src="{% static 'Img/Redes/wht.png' %}" style="width:42px;height:42px;"> WhatsApp</a>
+            </p>   
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>      
+    </body>
+</html>
